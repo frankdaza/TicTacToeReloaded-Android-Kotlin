@@ -65,22 +65,7 @@ class GameBoardActivity : AppCompatActivity() {
                     this.move = "X"
                 }
             }
-
             checkWinner(view)
-            turnOfPlayer(view)
-        }
-    }
-
-    /**
-     * Set the turn of the player
-     *
-     * Created by Frank Edward Daza González on Feb 18, 2018
-     */
-    fun turnOfPlayer(view: View) {
-        if (this.move == "X") {
-            tvPlayer.text = getString(R.string.lbl_turn_player_1)
-        } else {
-            tvPlayer.text = getString(R.string.lbl_turn_player_2)
         }
     }
 
@@ -122,6 +107,12 @@ class GameBoardActivity : AppCompatActivity() {
                 intent.putExtra("winner", 2)
                 ContextCompat.startActivity(view.context, intent, null)
             }
+
+            // Set the turn of the player
+            if (this.move == "X")
+                tvPlayer.text = getString(R.string.lbl_turn_player_1)
+            else
+                tvPlayer.text = getString(R.string.lbl_turn_player_2)
 
         }
     }
