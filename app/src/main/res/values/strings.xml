@@ -6,6 +6,7 @@
     <string name="lbl_player2">Player 2</string>
     <string name="lbl_player1_wins">Player 1 Wins!</string>
     <string name="lbl_player2_wins">Player 2 Wins!</string>
+    <string name="lbl_tie">Tie!</string>
     <string name="lbl_exit">Exit</string>
     <string name="lbl_play_again">Play Again</string>
     <string name="lbl_select_number_players">Select the number of players:</string>

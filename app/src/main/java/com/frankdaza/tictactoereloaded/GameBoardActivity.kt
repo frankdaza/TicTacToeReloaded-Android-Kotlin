@@ -8,6 +8,7 @@ import android.view.View
 import android.widget.Button
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_game_board.*
+import java.util.*
 
 class GameBoardActivity : AppCompatActivity() {
 
@@ -55,7 +56,71 @@ class GameBoardActivity : AppCompatActivity() {
             }
 
             if (this.typeOfGame == 1) {
-                Toast.makeText(view.context, "Missing this functionality", Toast.LENGTH_LONG).show()
+                this.listMovesPlayer1.add(buttonNewId)
+                var emptyCells: ArrayList<Int> = ArrayList<Int>()
+
+                for (cellId in 1..9) {
+                    if (!(this.listMovesPlayer1.contains(cellId) || this.listMovesPlayer2.contains(cellId))) {
+                        emptyCells.add(cellId)
+                    }
+                }
+
+                if (emptyCells.size > 0) {
+                    val ramd = Random()
+                    val ramdIndex = ramd.nextInt(emptyCells.size)
+                    val cellId = emptyCells[ramdIndex]
+
+                    if (this.listMovesPlayer1.size + this.listMovesPlayer2.size < 8) {
+                        when (cellId) {
+                            1 -> {
+                                this.listMovesPlayer2.add(1)
+                                button1.isEnabled = false
+                                button1.text = "O"
+                            }
+                            2 -> {
+                                this.listMovesPlayer2.add(2)
+                                button2.isEnabled = false
+                                button2.text = "O"
+                            }
+                            3 -> {
+                                this.listMovesPlayer2.add(3)
+                                button3.isEnabled = false
+                                button3.text = "O"
+                            }
+                            4 -> {
+                                this.listMovesPlayer2.add(4)
+                                button4.isEnabled = false
+                                button4.text = "O"
+                            }
+                            5 -> {
+                                this.listMovesPlayer2.add(5)
+                                button5.isEnabled = false
+                                button5.text = "O"
+                            }
+                            6 -> {
+                                this.listMovesPlayer2.add(6)
+                                button6.isEnabled = false
+                                button6.text = "O"
+                            }
+                            7 -> {
+                                this.listMovesPlayer2.add(7)
+                                button7.isEnabled = false
+                                button7.text = "O"
+                            }
+                            8 -> {
+                                this.listMovesPlayer2.add(8)
+                                button8.isEnabled = false
+                                button8.text = "O"
+                            }
+                            9 -> {
+                                this.listMovesPlayer2.add(9)
+                                button9.isEnabled = false
+                                button9.text = "O"
+                            }
+                        }
+                    }
+                }
+                checkWinner(view)
             } else {
                 if (this.move == "X") {
                     this.listMovesPlayer1.add(buttonNewId)
@@ -75,45 +140,50 @@ class GameBoardActivity : AppCompatActivity() {
      * Created by Frank Edward Daza González on Feb 18, 2018
      */
     fun checkWinner(view: View) {
-        if (this.typeOfGame == 1) {
+        // Check if the player 1 won
+        if (this.listMovesPlayer1.contains(1) && this.listMovesPlayer1.contains(2) && this.listMovesPlayer1.contains(3)
+                || this.listMovesPlayer1.contains(4) && this.listMovesPlayer1.contains(5) && this.listMovesPlayer1.contains(6)
+                || this.listMovesPlayer1.contains(7) && this.listMovesPlayer1.contains(8) && this.listMovesPlayer1.contains(9)
+                || this.listMovesPlayer1.contains(1) && this.listMovesPlayer1.contains(4) && this.listMovesPlayer1.contains(7)
+                || this.listMovesPlayer1.contains(2) && this.listMovesPlayer1.contains(5) && this.listMovesPlayer1.contains(8)
+                || this.listMovesPlayer1.contains(3) && this.listMovesPlayer1.contains(6) && this.listMovesPlayer1.contains(9)
+                || this.listMovesPlayer1.contains(1) && this.listMovesPlayer1.contains(5) && this.listMovesPlayer1.contains(9)
+                || this.listMovesPlayer1.contains(3) && this.listMovesPlayer1.contains(5) && this.listMovesPlayer1.contains(7)) {
 
+            val intent = Intent(view.context, WinnerActivity::class.java)
+            intent.putExtra("winner", 1)
+            ContextCompat.startActivity(view.context, intent, null)
+            return
+        }
+
+        // Check if the player 2 won
+        if (this.listMovesPlayer2.contains(1) && this.listMovesPlayer2.contains(2) && this.listMovesPlayer2.contains(3)
+                || this.listMovesPlayer2.contains(4) && this.listMovesPlayer2.contains(5) && this.listMovesPlayer2.contains(6)
+                || this.listMovesPlayer2.contains(7) && this.listMovesPlayer2.contains(8) && this.listMovesPlayer2.contains(9)
+                || this.listMovesPlayer2.contains(1) && this.listMovesPlayer2.contains(4) && this.listMovesPlayer2.contains(7)
+                || this.listMovesPlayer2.contains(2) && this.listMovesPlayer2.contains(5) && this.listMovesPlayer2.contains(8)
+                || this.listMovesPlayer2.contains(3) && this.listMovesPlayer2.contains(6) && this.listMovesPlayer2.contains(9)
+                || this.listMovesPlayer2.contains(1) && this.listMovesPlayer2.contains(5) && this.listMovesPlayer2.contains(9)
+                || this.listMovesPlayer2.contains(3) && this.listMovesPlayer2.contains(5) && this.listMovesPlayer2.contains(7)) {
+
+            val intent = Intent(view.context, WinnerActivity::class.java)
+            intent.putExtra("winner", 2)
+            ContextCompat.startActivity(view.context, intent, null)
+            return
+        }
+
+        // Check tie
+        if (this.listMovesPlayer1.size + this.listMovesPlayer2.size >= 9) {
+            val intent = Intent(view.context, WinnerActivity::class.java)
+            intent.putExtra("winner", 0)
+            ContextCompat.startActivity(view.context, intent, null)
+            return
         } else {
-            // Check if the player 1 won
-            if (this.listMovesPlayer1.contains(1) && this.listMovesPlayer1.contains(2) && this.listMovesPlayer1.contains(3)
-                    || this.listMovesPlayer1.contains(4) && this.listMovesPlayer1.contains(5) && this.listMovesPlayer1.contains(6)
-                    || this.listMovesPlayer1.contains(7) && this.listMovesPlayer1.contains(8) && this.listMovesPlayer1.contains(9)
-                    || this.listMovesPlayer1.contains(1) && this.listMovesPlayer1.contains(4) && this.listMovesPlayer1.contains(7)
-                    || this.listMovesPlayer1.contains(2) && this.listMovesPlayer1.contains(5) && this.listMovesPlayer1.contains(8)
-                    || this.listMovesPlayer1.contains(3) && this.listMovesPlayer1.contains(6) && this.listMovesPlayer1.contains(9)
-                    || this.listMovesPlayer1.contains(1) && this.listMovesPlayer1.contains(5) && this.listMovesPlayer1.contains(9)
-                    || this.listMovesPlayer1.contains(3) && this.listMovesPlayer1.contains(5) && this.listMovesPlayer1.contains(7)) {
-
-                val intent = Intent(view.context, WinnerActivity::class.java)
-                intent.putExtra("winner", 1)
-                ContextCompat.startActivity(view.context, intent, null)
-            }
-
-            // Check if the player 2 won
-            if (this.listMovesPlayer2.contains(1) && this.listMovesPlayer2.contains(2) && this.listMovesPlayer2.contains(3)
-                    || this.listMovesPlayer2.contains(4) && this.listMovesPlayer2.contains(5) && this.listMovesPlayer2.contains(6)
-                    || this.listMovesPlayer2.contains(7) && this.listMovesPlayer2.contains(8) && this.listMovesPlayer2.contains(9)
-                    || this.listMovesPlayer2.contains(1) && this.listMovesPlayer2.contains(4) && this.listMovesPlayer2.contains(7)
-                    || this.listMovesPlayer2.contains(2) && this.listMovesPlayer2.contains(5) && this.listMovesPlayer2.contains(8)
-                    || this.listMovesPlayer2.contains(3) && this.listMovesPlayer2.contains(6) && this.listMovesPlayer2.contains(9)
-                    || this.listMovesPlayer2.contains(1) && this.listMovesPlayer2.contains(5) && this.listMovesPlayer2.contains(9)
-                    || this.listMovesPlayer2.contains(3) && this.listMovesPlayer2.contains(5) && this.listMovesPlayer2.contains(7)) {
-
-                val intent = Intent(view.context, WinnerActivity::class.java)
-                intent.putExtra("winner", 2)
-                ContextCompat.startActivity(view.context, intent, null)
-            }
-
             // Set the turn of the player
             if (this.move == "X")
                 tvPlayer.text = getString(R.string.lbl_turn_player_1)
             else
                 tvPlayer.text = getString(R.string.lbl_turn_player_2)
-
         }
     }
 

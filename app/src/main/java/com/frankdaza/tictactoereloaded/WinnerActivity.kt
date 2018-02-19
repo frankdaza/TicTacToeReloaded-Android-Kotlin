@@ -17,10 +17,13 @@ class WinnerActivity : AppCompatActivity() {
         val bundle: Bundle = intent.extras
         var winner: Int = bundle.getInt("winner")
 
-        if (winner == 1)
+        if (winner == 1) {
             tvPlayer.text = getString(R.string.lbl_player1_wins)
-        else
+        } else if (winner == 2) {
             tvPlayer.text = getString(R.string.lbl_player2_wins)
+        } else {
+            tvPlayer.text = getString(R.string.lbl_tie)
+        }
     }
 
     /**
