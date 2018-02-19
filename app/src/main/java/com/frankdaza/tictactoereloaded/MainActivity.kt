@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity() {
      */
     fun action_player_1(view: View) {
         val intent = Intent(view.context, GameBoardActivity::class.java)
-        intent.putExtra("typeOfGame", "1")
+        intent.putExtra("typeOfGame", 1)
         ContextCompat.startActivity(view.context, intent, null)
     }
 
@@ -33,7 +33,7 @@ class MainActivity : AppCompatActivity() {
      */
     fun action_player_2(view: View) {
         val intent = Intent(view.context, GameBoardActivity::class.java)
-        intent.putExtra("typeOfGame", "2")
+        intent.putExtra("typeOfGame", 2)
         ContextCompat.startActivity(view.context, intent, null)
     }
 
