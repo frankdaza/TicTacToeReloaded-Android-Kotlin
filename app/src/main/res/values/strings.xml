@@ -9,7 +9,7 @@
     <string name="lbl_exit">Exit</string>
     <string name="lbl_play_again">Play Again</string>
     <string name="lbl_select_number_players">Select the number of players:</string>
-    <string name="lbl_the_winner_is">The winner is:</string>
+    <string name="lbl_the_winner_is">The Winner is:</string>
     <string name="lbl_turn_player_1">Turn Player 1</string>
     <string name="lbl_turn_player_2">Turn Player 2</string>
 </resources>
