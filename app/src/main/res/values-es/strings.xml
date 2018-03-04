@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">TicTacToe Recargado</string>
+
+    <string name="lbl_tictactoereloaded_name">TicTacToe Recargado</string>
+    <string name="lbl_player1">Jugador 1</string>
+    <string name="lbl_player2">Jugador 2</string>
+    <string name="lbl_player1_wins">Ganador Jugador 1!</string>
+    <string name="lbl_player2_wins">Ganador Jugador 2!</string>
+    <string name="lbl_tie">Empate!</string>
+    <string name="lbl_exit">Salir</string>
+    <string name="lbl_play_again">Jugar de Nuevo</string>
+    <string name="lbl_select_number_players">Selecciona el número de Jugadores:</string>
+    <string name="lbl_the_winner_is">El ganador es:</string>
+    <string name="lbl_turn_player_1">Turno Jugador 1</string>
+    <string name="lbl_turn_player_2">Turno Jugador 2</string>
+</resources>
