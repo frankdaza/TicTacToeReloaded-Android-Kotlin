@@ -13,4 +13,10 @@
     <string name="lbl_the_winner_is">The Winner is:</string>
     <string name="lbl_turn_player_1">Turn Player 1</string>
     <string name="lbl_turn_player_2">Turn Player 2</string>
+    <string name="lbl_enter_email">Enter your email</string>
+    <string name="lbl_enter_password">Enter your password</string>
+    <string name="lbl_log_in">Log in</string>
+    <string name="lbl_success_login">Success Login</string>
+    <string name="lbl_failed_login">Failed Login</string>
+    <string name="lbl_field_empty">Field cannot be empty</string>
 </resources>

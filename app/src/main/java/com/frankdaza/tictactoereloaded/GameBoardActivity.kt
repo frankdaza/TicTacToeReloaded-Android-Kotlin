@@ -1,16 +1,18 @@
 package com.frankdaza.tictactoereloaded
 
 import android.content.Intent
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v4.content.ContextCompat
+import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.widget.Button
-import android.widget.Toast
+import com.google.firebase.analytics.FirebaseAnalytics
 import kotlinx.android.synthetic.main.activity_game_board.*
 import java.util.*
 
 class GameBoardActivity : AppCompatActivity() {
+
+    private var mFirebaseAnalytics: FirebaseAnalytics? = null
 
     private var typeOfGame: Int = 1
     private var move: String = "X"
@@ -21,6 +23,9 @@ class GameBoardActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_game_board)
+
+        // Obtain the FirebaseAnalytics instance.
+        this.mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
 
         // Get the type of game from the MainActivity
         val bundle: Bundle = intent.extras
